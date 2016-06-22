@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Video test</title>
+    <style>
+        @media screen and (max-width: 768px) {
+            video {
+                display: none;
+            }
+
+            html {
+                background: url(poster.jpg) #000 no-repeat center center fixed;
+                background-size: cover;
+            }
+        }
+
+        @media screen and (min-width: 769px) {
+            html {
+                background: none;
+            }
+
+            video {
+                display: block;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+                z-index: -100;
+                -ms-transform: translateX(-50%) translateY(-50%);
+                -moz-transform: translateX(-50%) translateY(-50%);
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                transform: translateX(-50%) translateY(-50%);
+                background-size: cover;
+            }
+        }
+    </style>
+</head>
+<body>
+<video src="video.mp4" autoplay loop poster="poster.jpg" width="1280" height="768"></video>
+</body>
+</html>
