@@ -5,22 +5,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Video test</title>
     <style>
-        @media screen and (max-width: 768px) {
-            video {
-                display: none;
-            }
+        video {
+            display: none;
+        }
 
-            html {
-                background: url(poster.jpg) #000 no-repeat center center fixed;
-                background-size: cover;
-            }
+        html {
+            background: url(poster.jpg) #000 no-repeat center center fixed;
+            background-size: cover;
         }
 
         @media screen and (min-width: 769px) {
-            html {
-                background: none;
-            }
-
             video {
                 display: block;
                 position: fixed;
@@ -41,6 +35,25 @@
     </style>
 </head>
 <body>
-<video src="video.mp4" autoplay loop poster="poster.jpg" width="1280" height="768"></video>
+<script type="text/javascript">
+    if (window.matchMedia('screen and (min-width: 769px)').matches) {
+        var video = document.createElement('video');
+
+        var attributes = {
+            src: 'video.mp4',
+            autoplay: 'autoplay',
+            loop: 'loop',
+            poster: 'poster.jpg',
+            width: 1280,
+            height: 768
+        };
+
+        Object.getOwnPropertyNames(attributes).forEach(function (name) {
+            video.setAttribute(name, attributes[name]);
+        });
+
+        document.body.appendChild(video);
+    }
+</script>
 </body>
 </html>
