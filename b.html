@@ -35,7 +35,7 @@
 <img class="play-button" src="play.svg" width="200" height="200">
 <img class="poster" src="poster.jpg">
 <script type="text/javascript">
-    document.querySelector('.play-button').addEventListener('click', function () {
+    function addVideo() {
         var video = document.createElement('video');
 
         var attributes = {
@@ -52,8 +52,14 @@
         });
 
         document.body.appendChild(video);
-        this.style.display = 'none';
-    });
+        document.querySelector('.play-button').style.display = 'none';
+    }
+
+    if (window.matchMedia('screen and (min-width: 769px)').matches) {
+        addVideo();
+    } else {
+        document.querySelector('.play-button').addEventListener('click', addVideo);
+    }
 </script>
 </body>
 </html>
