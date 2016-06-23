@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Video test B - plays on desktop, click to play on mobile</title>
+    <style>
+        video, img.poster {
+            display: block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            -ms-transform: translateX(-50%) translateY(-50%);
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            background-size: cover;
+        }
+
+        .play-button {
+            display: block;
+            position: absolute;
+            top: calc(50% - 100px);
+            left: calc(50% - 100px);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+<img class="play-button" src="play.svg" width="200" height="200">
+<img class="poster" src="poster.jpg">
+<script type="text/javascript">
+    document.querySelector('.play-button').addEventListener('click', function () {
+        var video = document.createElement('video');
+
+        var attributes = {
+            src: 'video.mp4',
+            autoplay: 'autoplay',
+            loop: 'loop',
+            poster: 'poster.jpg',
+            width: 1280,
+            height: 768
+        };
+
+        Object.getOwnPropertyNames(attributes).forEach(function (name) {
+            video.setAttribute(name, attributes[name]);
+        });
+
+        document.body.appendChild(video);
+        this.style.display = 'none';
+    });
+</script>
+</body>
+</html>
